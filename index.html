@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eid Greeting Generator</title>
     <style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700&display=swap');
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Vazirmatn', sans-serif;
+  background-color: #E3DED5;
+}
+
+.greeting-text {
+  font-size: 40px;
+  font-weight: bold;
+  color: #333; /* Adjust if needed for contrast */
+}
+
         body {
             display: flex;
             justify-content: center;
@@ -47,6 +65,28 @@
         </div>
     </div>
     <script>
+function generateGreeting() {
+  const name = document.getElementById('name').value;
+  const canvas = document.getElementById('greetingCanvas');
+  const ctx = canvas.getContext('2d');
+
+  // Load the background image
+  const background = new Image();
+  background.src = 'data:image/png;base64,...'; // Base64-encoded background image
+
+  background.onload = function() {
+    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+
+    // Set text properties
+    ctx.font = 'bold 40px Vazirmatn';
+    ctx.fillStyle = '#333';
+    ctx.fillText(`Eid Mubarak, ${name}!`, 50, 250);
+
+    // Show the canvas
+    canvas.style.display = 'block';
+  };
+}
+
         function generateGreeting() {
             const name = document.getElementById('nameInput').value;
             const canvas = document.getElementById('greetingCanvas');
